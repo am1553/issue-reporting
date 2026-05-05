@@ -146,7 +146,9 @@ Implement a health-check endpoint to confirm that the backend starts correctly a
 
 ### What I did
 
-I implemented a basic `GET /api/health` endpoint to check that the Express backend is running and that the request-response cycle works. I also added supporting documentation in the `docs` folder, including:
+I implemented a basic `GET /api/health` endpoint to check that the Express backend is running and that the request-response cycle works. I also implemented `GET /api/issues` as the first issue-related backend route. This route connects to PostgreSQL, retrieves issue records from the `issues` table, and returns them as JSON.
+
+I added supporting documentation in the `docs` folder, including:
 
 - `data-model.md`
 - ADR files
@@ -157,14 +159,14 @@ I reviewed the TMA02 report against the actual repository state and corrected cl
 
 ### What went well
 
-The technical foundation is now cleaner and more coherent. The repository contains both executable scaffolding and supporting design documentation. The health-check endpoint gives a small but concrete implementation artefact for TMA02.
+The technical foundation is now cleaner and more coherent. The repository contains both executable scaffolding and supporting design documentation. The health-check endpoint confirms the backend is running, while `GET /api/issues` provides the first issue-related implementation evidence by returning persisted issue data from PostgreSQL.
 
-The report now better reflects the true project stage: strong design and setup evidence, with business functionality still in progress.
+The report now better reflects the true project stage: strong design and setup evidence, with the first backend issue route working but the wider issue workflow still in progress.
 
 ### What did not go well
 
-Visible business functionality is still limited at TMA02. The core issue workflow has not yet been completed, so the strongest evidence at this stage is architecture, database design, repository setup, schema execution, documentation and the health-check endpoint.
+Visible business functionality is still limited at TMA02. Although `GET /api/issues` is working, issue creation, editing, status updates, authentication, validation and frontend rendering against live data still need to be completed.
 
 ### Next action
 
-Submit TMA02. Immediately after submission, begin implementing `POST /api/issues` with Zod validation as the first business endpoint, followed by `GET /api/issues` and the React issue list.
+Submit TMA02. Immediately after submission, begin implementing `POST /api/issues` with Zod validation, followed by the React issue list and status update workflow.
